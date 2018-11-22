@@ -100,7 +100,7 @@ int main()
      generator= line;                  /*Parse the line to get generator*/
      myfile.close();
   }
-                                      /*******Case there is no error*******/
+                             /*******Case there is no error*******/
     
   string test=Generator(frame,generator);                           /*Generate message to be transmitted*/
   cout<<"  ***********No error state*********** "<<endl;
