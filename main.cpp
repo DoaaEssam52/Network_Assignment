@@ -66,9 +66,45 @@ string Generator(string mm,string pp)
      mm+=rr;
      return mm;
 }
+void verifier(string TransmittedM,string poly)
+{
+   string verify=Remainder(TransmittedM,poly);
+   int flag=0;
+   for(int i=0;i<verify.length();i++)
+   {
+       if(verify[i]!='0')
+       {
+           flag++;
 
+       }
+
+   }
+    if(flag>0)
+        cout<<"Ops!! There is an error"<<endl;
+    else
+        cout<<"Message is correct"<<endl;
+
+}
 int main()
 {
-    cout << "Hello world!" << endl;
+  string line;                         /*Input from file*/
+  string frame="";                   /* initial message from sender before adding remainder*/
+  string generator="";
+  string x="";
+  int indexxx=0;                       /*Index to be chosen by user to alter the message*/
+  ifstream myfile ("CRC_in.txt");      /*Reading the input from CRC_in file*/
+  if (myfile.is_open())
+  {  getline (myfile,line);
+      frame= line;                   /*Parse the line to get message*/
+     getline (myfile,line) ;
+     generator= line;                       /*Parse the line to get generator*/
+     myfile.close();
+  }
+  string test=Generator(frame,generator); /*Generate message to be transmitted*/
+  cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
+  cout<<"Transmitted message= "<<test<<endl;
+  verifier(x,generator);
     return 0;
 }
+
+
