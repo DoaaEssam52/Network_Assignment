@@ -12,7 +12,7 @@ char Xor (char x , char y)
         return '1';
 }
 string alter(int index,string m_in)
-{   cout<<" Index = ";
+{   cout<<"Index = ";
     cin>>index;
     if(index!=0)
         {
@@ -80,7 +80,7 @@ void verifier(string TransmittedM,string poly)
 
    }
     if(flag>0)
-        cout<<"Ops!! There is an error"<<endl;
+        cout<<"Sorry,,there is an error"<<endl;
     else
         cout<<"Message is correct"<<endl;
 
@@ -88,22 +88,34 @@ void verifier(string TransmittedM,string poly)
 int main()
 {
   string line;                         /*Input from file*/
-  string frame="";                   /* initial message from sender before adding remainder*/
+  string frame="";                     /* initial message from sender before adding remainder*/
   string generator="";
   string x="";
   int indexxx=0;                       /*Index to be chosen by user to alter the message*/
   ifstream myfile ("CRC_in.txt");      /*Reading the input from CRC_in file*/
   if (myfile.is_open())
   {  getline (myfile,line);
-      frame= line;                   /*Parse the line to get message*/
+      frame= line;                     /*Parse the line to get message*/
      getline (myfile,line) ;
-     generator= line;                       /*Parse the line to get generator*/
+     generator= line;                  /*Parse the line to get generator*/
      myfile.close();
   }
-  string test=Generator(frame,generator); /*Generate message to be transmitted*/
+                                      /*******Case there is no error*******/
+    
+  string test=Generator(frame,generator);                           /*Generate message to be transmitted*/
+  cout<<"  ***********No error state*********** "<<endl;
   cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
   cout<<"Transmitted message= "<<test<<endl;
   verifier(x,generator);
+    
+                             /******Case There is an error********/
+    
+  cout<<endl<<"  *********** Error state*********** "<<endl;
+  string test_error=Generator(frame,generator);                     /*Generate message to be transmitted*/
+  cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
+  cout<<"Transmitted message= "<<test_error<<endl;
+  string wrong=alter(indexxx,test_error);
+  verifier(wrong,generator);
     return 0;
 }
 
