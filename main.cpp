@@ -100,14 +100,16 @@ int main()
      generator= line;                  /*Parse the line to get generator*/
      myfile.close();
   }
-                             /*******Case there is no error*******/
-    
-  string test=Generator(frame,generator);                           /*Generate message to be transmitted*/
+                             /*******Case there is no error*******/             
+
   cout<<"  ***********No error state*********** "<<endl;
+  string test=Generator(frame,generator);                           /*Generate message to be transmitted*/
+   string remainder1=Remainder(frame,generator) ;      
   cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
   cout<<"Transmitted message= "<<test<<endl;
   verifier(x,generator);
-    
+  cout<<"Remainder of verifier= "<<Remainder(test,generator)<<endl;
+
                              /******Case There is an error********/
     
   cout<<endl<<"  *********** Error state*********** "<<endl;
@@ -115,7 +117,10 @@ int main()
   cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
   cout<<"Transmitted message= "<<test_error<<endl;
   string wrong=alter(indexxx,test_error);
+    cout<<"Transmitted message when alter= "<<wrong<<endl;
   verifier(wrong,generator);
+     cout<<"Remainder of verifier= "<<Remainder(wrong,generator)<<endl;
+
     return 0;
 }
 
