@@ -1,0 +1,8 @@
+1.The Generator takes the message from the sender and the polynomial and outputs Transmitted message (main message+ remainder)
+2. To have no error use:
+Generator(frame,generator);    --->   "this outputs the frame+remainder of the division"
+Verifier(output of Generator Fn,generator);  ---> this outputs that the message is correct (remainder is zeros )
+3.To have an error use:
+Generator(frame,generator);    --->   "this outputs the frame+remainder of the division"
+Alter(index of bit to flip it , transmitted message) ---> this function makes an error in our system it takes string and index and change this index of this string
+Verifier(output of Alter Fn,generator);  ---> this outputs that the message is not correct (remainder  is not zero)
