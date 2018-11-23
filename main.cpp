@@ -107,7 +107,7 @@ int main()
    string remainder1=Remainder(frame,generator) ;      
   cout<<"Frame= "<<frame<<endl<<"Generator= "<<generator<<endl;
   cout<<"Transmitted message= "<<test<<endl;
-  verifier(x,generator);
+  verifier(test,generator);
   cout<<"Remainder of verifier= "<<Remainder(test,generator)<<endl;
 
                              /******Case There is an error********/
